@@ -1,0 +1,96 @@
+version: "3.7"
+
+services:
+  postgresdb:
+    build:
+      context: docker/postgres
+      dockerfile: Dockerfile
+    ports:
+        - "5432:5432"
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
+
+  users:
+    build:
+      context: ./Users
+      dockerfile: Dockerfile
+    ports:
+      - "1234:1234"
+    environment:
+      - SECRET_KEY=SECRET_KEY
+      - USER=vova
+      - PASSWORD=123456
+      - HOST=postgresdb
+      - PORT=5432
+      - DATABASE=users_db
+      - RABBITMQ_USERNAME=user
+      - RABBITMQ_PASSWORD=password
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+    depends_on:
+      - postgresdb
+      - rabbitmq
+    restart: unless-stopped
+
+  books:
+    build:
+      context: ./Books
+      dockerfile: Dockerfile
+    ports:
+      - "1235:1235"
+    environment:
+      - SECRET_KEY=SECRET_KEY
+      - USER=vova
+      - PASSWORD=123456
+      - HOST=postgresdb
+      - PORT=5432
+      - DATABASE=books_db
+      - RABBITMQ_USERNAME=user
+      - RABBITMQ_PASSWORD=password
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+    depends_on:
+      - postgresdb
+      - rabbitmq
+    restart: unless-stopped
+
+  issues:
+    build:
+      context: ./Issues
+      dockerfile: Dockerfile
+    ports:
+      - "1236:1236"
+    environment:
+      - SECRET_KEY=SECRET_KEY
+      - USER=vova
+      - PASSWORD=123456
+      - HOST=postgresdb
+      - PORT=5432
+      - DATABASE=issues_db
+      - RABBITMQ_USERNAME=user
+      - RABBITMQ_PASSWORD=password
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+    depends_on:
+      - postgresdb
+      - rabbitmq
+    restart: unless-stopped
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - books
+      - issues
+      - users

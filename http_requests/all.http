@@ -1,0 +1,146 @@
+POST http://127.0.0.1/api/users/create_user
+Content-Type: application/json
+#create user 1
+
+{
+  "login": "vova",
+  "password": 1234,
+  "name": "vova"
+}
+###
+GET http://127.0.0.1/api/users/user
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.mirNJ1m7tu_WhfHJ2gaHS0nHv4FoKLY1Qk29iKnU4bY
+###
+POST http://127.0.0.1/api/users/update_user
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.mirNJ1m7tu_WhfHJ2gaHS0nHv4FoKLY1Qk29iKnU4bY
+Content-Type: application/json
+
+{
+  "email": "vova@mail.ru"
+}
+###
+POST http://127.0.0.1/api/users/sign_in
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.mirNJ1m7tu_WhfHJ2gaHS0nHv4FoKLY1Qk29iKnU4bY
+Content-Type: application/json
+#create user 1
+
+{
+  "login": "vova",
+  "password": 1234
+}
+###
+
+
+
+POST http://127.0.0.1/api/books/add_book
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.mirNJ1m7tu_WhfHJ2gaHS0nHv4FoKLY1Qk29iKnU4bY
+Content-Type: application/json
+
+{
+  "title": "Война и мир",
+  "author": "Л.Н.Толстой"
+}
+###
+POST http://127.0.0.1/api/books/rent_book
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.mirNJ1m7tu_WhfHJ2gaHS0nHv4FoKLY1Qk29iKnU4bY
+Content-Type: application/json
+
+{
+  "book_id": 1
+}
+###
+POST http://127.0.0.1/api/books/update_book
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.mirNJ1m7tu_WhfHJ2gaHS0nHv4FoKLY1Qk29iKnU4bY
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Upd Война и мир"
+}
+###
+GET http://127.0.0.1/api/books/book?book_id=1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.mirNJ1m7tu_WhfHJ2gaHS0nHv4FoKLY1Qk29iKnU4bY
+###
+GET http://127.0.0.1/api/books/books
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.mirNJ1m7tu_WhfHJ2gaHS0nHv4FoKLY1Qk29iKnU4bY
+###
+
+
+
+
+
+
+
+
+
+
+#
+#
+#POST http://127.0.0.1:8080/api/users/create_user
+#Content-Type: application/json
+##create user 1
+#
+#{
+#  "login": "vova",
+#  "password": 1234,
+#  "name": "vova"
+#}
+####
+#GET http://127.0.0.1:8080/api/users/user
+#Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.9CoutgnPd2n89dwd-4Hw3armwf3yYIlGRHQ9bMeUvb0
+####
+#POST http://127.0.0.1:8080/api/users/update_user
+#Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.9CoutgnPd2n89dwd-4Hw3armwf3yYIlGRHQ9bMeUvb0
+#Content-Type: application/json
+##create user 1
+#
+#{
+#  "email": "vova@mail.ru"
+#}
+####
+#POST http://127.0.0.1:8080/api/users/sign_in
+#Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.9CoutgnPd2n89dwd-4Hw3armwf3yYIlGRHQ9bMeUvb0
+#Content-Type: application/json
+##create user 1
+#
+#{
+#  "login": "vova",
+#  "password": 1234
+#}
+#
+#
+#
+####
+#POST http://127.0.0.1:8082/api/books/add_book
+#Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.9CoutgnPd2n89dwd-4Hw3armwf3yYIlGRHQ9bMeUvb0
+#Content-Type: application/json
+#
+#{
+#  "title": "Война и мир",
+#  "author": "Л.Н.Толстой"
+#}
+####
+#POST http://127.0.0.1:8082/api/books/rent_book
+#Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.9CoutgnPd2n89dwd-4Hw3armwf3yYIlGRHQ9bMeUvb0
+#Content-Type: application/json
+#
+#{
+#  "book_id": 1
+#}
+####
+#POST http://127.0.0.1:8082/api/books/update_book
+#Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.9CoutgnPd2n89dwd-4Hw3armwf3yYIlGRHQ9bMeUvb0
+#Content-Type: application/json
+#
+#{
+#  "id": 1,
+#  "title": "Upd Война и мир"
+#}
+####
+#GET http://127.0.0.1:8082/api/books/book?book_id=1
+#Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.9CoutgnPd2n89dwd-4Hw3armwf3yYIlGRHQ9bMeUvb0
+####
+#GET http://127.0.0.1:8082/api/books/books
+#Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.9CoutgnPd2n89dwd-4Hw3armwf3yYIlGRHQ9bMeUvb0
+####
+#
