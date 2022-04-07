@@ -9,7 +9,6 @@ class IssueUser:
 	id: int
 	data_last_change: Optional[datetime] = None
 	books_read: Optional[str] = None
-	deleted: bool = False
 
 
 @attr.dataclass
