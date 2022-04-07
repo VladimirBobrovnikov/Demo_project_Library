@@ -3,7 +3,6 @@ from classic.aspects import PointCut
 from classic.messaging import Publisher, Message
 from classic.app import DTO, validate_with_dto
 from pydantic import validate_arguments
-from attr import asdict
 
 from typing import Optional
 
@@ -42,7 +41,12 @@ class BookService:
 		body = {
 			'data': {
 				'routing_key': 'books.add',
-				'add': asdict(book)
+				'add': {
+						'id': book.id,
+						'title': book.title,
+						'author': book.author,
+						'tenants_id': book.tenants_id
+					}
 			}
 		}
 		self.publisher.plan(
@@ -70,7 +74,12 @@ class BookService:
 			body = {
 				'data': {
 					'routing_key': 'books.update',
-					'update': asdict(old_book)
+					'update': {
+						'id': old_book.id,
+						'title': old_book.title,
+						'author': old_book.author,
+						'tenants_id': old_book.tenants_id
+					}
 				}
 			}
 			self.publisher.plan(
@@ -100,39 +109,48 @@ class BookService:
 	@join_point
 	def rent_book(self, user_id: int, book_id: int):
 		book = self.books.get_by_id(book_id)
-		if book and book.tenants_id is None:
-			book.tenants_id = user_id
-			self.books.update(book)
-			body = {
-				'data': {
-					'routing_key': 'books.rent',
-					'rent': {
-						'id': book.id,
-						'tenants_id': book.tenants_id
+		if book:
+			if book.tenants_id is None:
+				book.tenants_id = user_id
+				self.books.update(book)
+				body = {
+					'data': {
+						'routing_key': 'books.rent',
+						'rent': {
+							'id': book.id,
+							'tenants_id': book.tenants_id
+						}
 					}
 				}
-			}
-			self.publisher.plan(
-				Message('books', body)
-			)
+				self.publisher.plan(
+					Message('books', body)
+				)
+			else:
+				raise errors.BookAlreadyBooked
+		else:
+			raise errors.NoBook
+
 
 	@join_point
 	def return_book(self, user_id: int, book_id: int):
 		book = self.books.get_by_id(book_id)
-		if book and book.tenants_id == user_id:
-			book.tenants_id = None
-			self.books.update(book)
-			body = {
-				'data': {
-					'routing_key': 'books.return',
-					'return': {
-						'id': book.id,
-						'tenants_id': None
+		if book:
+			if book.tenants_id == user_id:
+				book.tenants_id = None
+				self.books.update(book)
+				body = {
+					'data': {
+						'routing_key': 'books.return',
+						'return': {
+							'id': book.id,
+							'tenants_id': None
+						}
 					}
 				}
-			}
-			self.publisher.plan(
-				Message('books', body)
-			)
-
-
+				self.publisher.plan(
+					Message('books', body)
+				)
+			else:
+				raise errors.BooksNotBooked
+		else:
+			raise errors.NoBook
