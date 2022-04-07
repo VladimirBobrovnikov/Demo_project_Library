@@ -5,7 +5,7 @@ from kombu import Connection
 from adapters import api
 from adapters import RabbitMQ
 from application import services
-from adapters.db.issues.storage import LogsRepo
+from adapters.db.issues.storage import LogsRepo, IssueBookRepo, IssueUserRepo
 from adapters.db import db__init
 
 import threading
@@ -18,11 +18,16 @@ class DB:
 	context = TransactionContext(bind=engine, expire_on_commit=False)
 
 	actions = LogsRepo(context=context)
+	issue_user_repo = IssueUserRepo(context=context)
+	issue_book_repo = IssueBookRepo(context=context)
+
 
 
 class Application:
 	actions = services.ActionsService(
 		actions=DB.actions,
+		issue_user_repo=DB.issue_user_repo,
+		issue_book_repo=DB.issue_book_repo
 	)
 
 

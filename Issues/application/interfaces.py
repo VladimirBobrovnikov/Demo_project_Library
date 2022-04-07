@@ -15,7 +15,11 @@ class IssueBookRepo(ABC):
 		...
 
 	@abstractmethod
-	def update(self, issue_book: IssueBook):
+	def update(self, id: int):
+		...
+
+	@abstractmethod
+	def rent(self, id_book: int, id_user: int):
 		...
 
 	@abstractmethod
@@ -27,7 +31,7 @@ class IssueBookRepo(ABC):
 		...
 
 	@abstractmethod
-	def get_all_reader(self, user_id) -> List[IssueUser]:
+	def get_all_reader(self, id_book) -> List[IssueUser]:
 		...
 
 
@@ -42,11 +46,11 @@ class IssueUserRepo(ABC):
 		...
 
 	@abstractmethod
-	def update_user_data(self):
+	def update_user_data(self, id: int):
 		...
 
 	@abstractmethod
-	def update_user_rents(self, issue_user: IssueUser):
+	def update_user_rents(self, id_user: int, id_book: int):
 		...
 
 	@abstractmethod
@@ -58,7 +62,7 @@ class IssueUserRepo(ABC):
 		...
 
 	@abstractmethod
-	def get_all_reading_book(self, user_id) -> List[IssueUser]:
+	def get_all_reading_book(self, user_id) -> dict:
 		...
 
 

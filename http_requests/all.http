@@ -3,7 +3,7 @@ Content-Type: application/json
 #create user 1
 
 {
-  "login": "vova",
+  "login": "vova4",
   "password": 1234,
   "name": "vova"
 }

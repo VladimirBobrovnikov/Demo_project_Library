@@ -1,22 +1,22 @@
 import attr
+import json
 from typing import Optional
 from datetime import datetime
 
 
 @attr.dataclass
 class IssueUser:
-	user_id: int
+	id: int
 	data_last_change: Optional[datetime] = None
-	issue_id: Optional[int] = None
-	books_reading: Optional['IssueBook'] = None
+	books_read: Optional[str] = None
 	deleted: bool = False
 
 
 @attr.dataclass
 class IssueBook:
-	book_id: int
+	id: int
 	data_last_change: Optional[datetime] = None
-	issue_id: Optional[int] = None
+	tenants: Optional[str] = None
 
 
 @attr.dataclass

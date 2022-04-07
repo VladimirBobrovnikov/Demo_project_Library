@@ -86,7 +86,7 @@ class BookService:
 		body = {
 			'data': {
 				'routing_key': 'books.delete',
-				'delete': id_
+				'delete': {'id': id_}
 			}
 		}
 		self.publisher.plan(
@@ -107,7 +107,7 @@ class BookService:
 				'data': {
 					'routing_key': 'books.rent',
 					'rent': {
-						'book_id': book.id,
+						'id': book.id,
 						'tenants_id': book.tenants_id
 					}
 				}
@@ -126,8 +126,8 @@ class BookService:
 				'data': {
 					'routing_key': 'books.return',
 					'return': {
-						'book_id': book.id,
-						'tenants_id': 'None'
+						'id': book.id,
+						'tenants_id': None
 					}
 				}
 			}

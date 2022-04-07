@@ -13,7 +13,7 @@ def create_consumer(connection: Connection,
                              scheme=broker_scheme)
 
     consumer.register_function(
-        actions.test_method, 'BooksAction', 'UsersAction'
+        actions.get_message, 'BooksAction', 'UsersAction'
     )
 
     return consumer
