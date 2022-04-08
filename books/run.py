@@ -7,5 +7,3 @@ if __name__ == "__main__":
 		print('server with port 1235')
 		server.serve_forever()
 
-
-	#hupper -m waitress --port=8123 --host=127.0.0.1 messanger_api:app
