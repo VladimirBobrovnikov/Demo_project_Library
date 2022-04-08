@@ -43,12 +43,12 @@ user_2 = dataclasses.User(login='gora', password='1234', name='Igor', email='igo
 
 def test__sign_in(service1):
 	token = service1.sign_in(**user_DTO_for_sign_in)
-	assert token == "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.9CoutgnPd2n89dwd-4Hw3armwf3yYIlGRHQ9bMeUvb0"
+	assert token == "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.mirNJ1m7tu_WhfHJ2gaHS0nHv4FoKLY1Qk29iKnU4bY"
 
 
 def test__add_user(service1):
 	token = service1.add_user(**user_DTO)
-	assert token == "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.9CoutgnPd2n89dwd-4Hw3armwf3yYIlGRHQ9bMeUvb0"
+	assert token == "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoidm92YSIsIm5hbWUiOiJ2b3ZhIiwicGFzc3dvcmQiOiIxMjM0IiwiZ3JvdXBzIjoiYWRtaW5zIn0.mirNJ1m7tu_WhfHJ2gaHS0nHv4FoKLY1Qk29iKnU4bY"
 
 
 def test__get_user(service1):
