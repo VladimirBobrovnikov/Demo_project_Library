@@ -14,12 +14,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Build the Docker images
       run: docker-compose build
+
     - name: Test books service
       run: docker-compose run books pytest
+
     - name: Test users service
       run: docker-compose run users pytest
+
     - name: Test issues service
       run: docker-compose run issues pytest
 
