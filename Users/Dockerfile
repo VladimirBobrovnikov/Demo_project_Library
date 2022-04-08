@@ -7,7 +7,7 @@ COPY setup.cfg .
 RUN pip3 install -e '.[install_requires]'
 RUN pip3 install -e '.[dev]'
 
-COPY . .
+COPY . ./users
 
-CMD ["python3", "run.py"]
+CMD ["python3", "users/run.py"]
 
