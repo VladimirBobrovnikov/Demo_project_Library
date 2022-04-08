@@ -1,5 +1,5 @@
 import pytest
-from Issues.application import dataclasses
+from application import dataclasses
 from datetime import datetime
 
 

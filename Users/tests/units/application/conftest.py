@@ -3,7 +3,7 @@ from classic.messaging import Publisher
 
 import pytest
 
-from Users.application import interfaces
+from application import interfaces
 
 
 @pytest.fixture(scope='function')

@@ -1,7 +1,7 @@
 import pytest
 from attr import asdict
-from Users.application.services import UserService
-from Users.application import dataclasses
+from application.services import UserService
+from application import dataclasses
 from datetime import datetime
 
 

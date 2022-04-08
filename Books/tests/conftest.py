@@ -1,5 +1,5 @@
 import pytest
-from Books.application import dataclasses
+from application import dataclasses
 
 
 @pytest.fixture(scope='function')

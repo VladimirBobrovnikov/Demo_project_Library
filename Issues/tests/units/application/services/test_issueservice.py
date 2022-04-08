@@ -1,5 +1,5 @@
 import pytest
-from Issues.application.services import ActionsService
+from application.services import ActionsService
 
 
 @pytest.fixture(scope='function')

@@ -3,7 +3,7 @@ version: "3.7"
 services:
   postgresdb:
     build:
-      context: docker/postgres
+      context: ./postgres
       dockerfile: Dockerfile
     ports:
         - "5432:5432"
@@ -19,7 +19,7 @@ services:
 
   users:
     build:
-      context: ./Users
+      context: ./users
       dockerfile: Dockerfile
     ports:
       - "1234:1234"
@@ -41,7 +41,7 @@ services:
 
   books:
     build:
-      context: ./Books
+      context: ./books
       dockerfile: Dockerfile
     ports:
       - "1235:1235"
@@ -63,7 +63,7 @@ services:
 
   issues:
     build:
-      context: ./Issues
+      context: ./issues
       dockerfile: Dockerfile
     ports:
       - "1236:1236"
@@ -84,9 +84,7 @@ services:
     restart: unless-stopped
 
   nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
+    build: ./nginx
     ports:
       - "80:80"
       - "443:443"

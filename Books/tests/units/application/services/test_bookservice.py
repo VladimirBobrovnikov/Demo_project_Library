@@ -1,8 +1,8 @@
 import pytest
 from attr import asdict
-from Books.application import errors
-from Books.application.services import BookService
-from Books.application import dataclasses
+from application import errors
+from application.services import BookService
+from application import dataclasses
 from unittest.mock import Mock
 
 

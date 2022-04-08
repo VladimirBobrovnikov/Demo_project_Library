@@ -1,5 +1,5 @@
 import pytest
-from Users.application import dataclasses
+from application import dataclasses
 from datetime import datetime
 
 @pytest.fixture(scope='function')
